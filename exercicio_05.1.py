@@ -17,15 +17,17 @@ def censura(palavra_secreta):
   return cens
 
 # Função que marca acertos do usuário substituindo os "_" pelas letras corretas
-def marca_acerto(letra, letras_acertadas, palavra_secreta):
-  i = 0
-  # Loop que passa em cada letra da palavra secreta
-  for l in palavra_secreta:
-      # Condição que verifica o chute com as letras da palavra secreta
-      if letra == l:
-          # Substituição do chute certo com as letras da palavra secreta
-          letras_acertadas[i] = l
-      i += 1
+def marca_acerto(chute, letras_acertadas, palavra_secreta):
+
+  # Contador do comprimento da palavra secreta
+  for i in range(len(palavra_secreta)):
+    # Loop que passa em cada letra da palavra secreta
+    for l in palavra_secreta:
+        # Condição que verifica o chute com as letras da palavra secreta
+        if chute == l:
+            # Substituição do chute certo com as letras da palavra secreta
+            letras_acertadas[i] = l
+
 
 
 def jogo(palavra_secreta):
@@ -45,7 +47,7 @@ def jogo(palavra_secreta):
   print("Tente acertar a palavra de {0} letras".format(len(resposta)))
 
   # Loop que verifica se o jogo não acabou ainda
-  while not ganhou and not perdeu:
+  while not ganhou or not perdeu:
 
     # Input do chute do usuário
     chute = input("\nDigita uma letra: ").upper()
