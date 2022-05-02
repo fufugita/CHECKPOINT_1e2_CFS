@@ -34,8 +34,8 @@ def jogo(palavra_secreta):
   resposta = censura(palavra_secreta)
 
   # Condições para acabar o jogo
-  acertou = False
-  enforcou = False
+  ganhou = False
+  perdeu = False
 
   erros = 0
   tentativas = 5
@@ -46,10 +46,10 @@ def jogo(palavra_secreta):
   print(resposta)
 
   # Loop que verifica se o jogo não acabou ainda
-  while not acertou and not enforcou:
+  while not ganhou and not perdeu:
 
     # Input do chute do usuário
-    chute = input("\nDigite uma letra: ").upper()
+    chute = input("\nDigita uma letra: ").upper()
 
     # Condição que verifica se o chute está correto
     if chute in palavra_secreta:
@@ -77,11 +77,11 @@ def jogo(palavra_secreta):
 
     # Verifica as condições para acabar o jogo sendo 6 o número de tentativas caso erre
     if erros == 5:
-      enforcou = True
+      perdeu = True
     elif "_" not in resposta:
-      acertou = True
+      ganhou = True
       
-  if acertou:
+  if ganhou:
     print("\nVocê ganhou parabéns!")
   else:
     print("\nVocê perdeu a palavra era: {0}!".format(palavra_secreta))
