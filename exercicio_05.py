@@ -26,7 +26,7 @@ def marca_acerto(letra, letras_acertadas, palavra_secreta):
     # Loop que passa em cada letra da palavra secreta
     for l in palavra_secreta:
         # Condição que verifica o chute com as letras da palavra secreta
-        if (letra == l):
+        if letra == l:
             # Substituição do chute certo com as letras da palavra secreta
             letras_acertadas[i] = l
         i += 1
