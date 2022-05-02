@@ -49,7 +49,7 @@ def jogo(palavra_secreta):
   while not acertou and not enforcou:
 
     # Input do chute do usuário
-    chute = input("\nDigita uma letra: ").upper()
+    chute = input("\nDigite uma letra: ").upper()
 
     # Condição que verifica se o chute está correto
     if chute in palavra_secreta:
