@@ -43,7 +43,6 @@ def jogo(palavra_secreta):
   faltando = len(resposta)
 
   print("Tente acertar a palavra de {0} letras".format(len(resposta)))
-  print(resposta)
 
   # Loop que verifica se o jogo não acabou ainda
   while not ganhou and not perdeu:
