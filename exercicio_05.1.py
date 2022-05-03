@@ -17,7 +17,7 @@ def censura(palavra_secreta):
   return cens
 
 # Função que marca acertos do usuário substituindo os "_" pelas letras corretas
-def marca_acerto(chute, letras_acertadas, palavra_secreta):
+def marca_acerto(letra, letras_acertadas, palavra_secreta):
     
     i = 0
     # Loop que passa em cada letra da palavra secreta
