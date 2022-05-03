@@ -1,11 +1,10 @@
-from random import randrange
+from random import choice
 
 def palavra_secreta():
     palavras = ["Bigode", "Cadeira", "Doce", "Mola", "Assobio", "Sobrancelhas", "Lamente", "Pimenta", "Capacete", "Limpo", "Estanho", "Mala", "Soldado", "Torneira", "Dinheiro", "Peixe", "Garrafa", "Joelho", "Melancia", "Ovos"]
 
     # Escolha aleatória de um número entre 0 e comprimento da lista de palavras
-    num = randrange(0, len(palavras))
-    ps = palavras[num].upper()
+    ps = choice(tuple(palavras)).upper()
   
     return ps
 
@@ -17,16 +16,16 @@ def censura(palavra_secreta):
   return cens
 
 # Função que marca acertos do usuário substituindo os "_" pelas letras corretas
-def marca_acerto(letra, letras_acertadas, palavra_secreta):
-    
-    i = 0
+def marca_acerto(chute, letras_acertadas, palavra_secreta):
+
+  i = 0
     # Loop que passa em cada letra da palavra secreta
-    for l in palavra_secreta:
-        # Condição que verifica o chute com as letras da palavra secreta
-        if letra == l:
-            # Substituição do chute certo com as letras da palavra secreta
-            letras_acertadas[i] = l
-        i += 1
+  for l in palavra_secreta:
+    # Condição que verifica o chute com as letras da palavra secreta
+    if chute == l:
+      # Substituição do chute certo com as letras da palavra secreta
+      letras_acertadas[i] = l
+    i += 1
 
 
 
@@ -34,10 +33,10 @@ def jogo(palavra_secreta):
 
   # Seleção e Censura da palavra secreta aleatória
   resposta = censura(palavra_secreta)
+  print(palavra_secreta)
 
   # Condições para acabar o jogo
-  ganhou = False
-  perdeu = False
+  acabou = False
 
   erros = 0
   tentativas = 5
@@ -47,7 +46,7 @@ def jogo(palavra_secreta):
   print("Tente acertar a palavra de {0} letras".format(len(resposta)))
 
   # Loop que verifica se o jogo não acabou ainda
-  while not ganhou or not perdeu:
+  while not acabou:
 
     # Input do chute do usuário
     chute = input("\nDigita uma letra: ").upper()
@@ -78,9 +77,11 @@ def jogo(palavra_secreta):
 
     # Verifica as condições para acabar o jogo sendo 6 o número de tentativas caso erre
     if erros == 5:
-      perdeu = True
+      ganhou = False
+      acabou = True
     elif "_" not in resposta:
       ganhou = True
+      acabou = True
       
   if ganhou:
     print("\nVocê ganhou parabéns!")
